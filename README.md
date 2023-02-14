@@ -79,18 +79,37 @@ By inspecting this file I learned that:
 [tltyner@nova UNIX_Assignment]$ cat snp_genotype_maize_chr1_sorted_reverse_-.txt
 #check to make sure it worked
 #repeated lines 69-80 for chromosomes 2-10
-
-
-
+```
 
 ###Teosinte Data
 
 ```
-[tltyner@nova UNIX_Assignment]$ head -n 1 fang_et_al_genotypes.txt
-[tltyner@nova UNIX_Assignment]$ head -n 1 transposed_genotypes.txt
-[tltyner@nova UNIX_Assignment]$ head -n 1 snp_position.txt
-[tltyner@nova UNIX_Assignment]$ grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt > teosinte_genotypes.txt
-[tltyner@nova UNIX_Assignment]$ awk -f transpose.awk teosinte_genotypes.txt > transposed_teosinte_genotypes.txt
+[tltyner@nova UNIX_Assignment]$ grep -E "(Sample_ID|ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt > teosinte_genotypes.txt 
+#extracted groups
+[tltyner@nova UNIX_Assignment]$ awk -f transpose.awk teosinte_genotypes.txt > transposed_teosinte_genotypes.txt 
+#transposed genotype data to match snp data
+[tltyner@nova UNIX_Assignment]$ cat transposed_teosinte_genotypes.txt 
+#checked to see if it worked
+[tltyner@nova UNIX_Assignment]$ sort -k1,1 transposed_teosinte_genotypes.txt > transposed_teosinte_genotypes_sorted.txt 
+#sort common column
+[tltyner@nova UNIX_Assignment]$ join -1 1 -2 1 -t $'\t' -a 1 -a 2 snp_position_sorted.txt transposed_teosinte_genotypes_sorted.txt > combined_snp_genotype_teosinte.txt
+#combine teosinte genotype and snp data
+[tltyner@nova UNIX_Assignment]$ cat combined_snp_genotype_teosinte.txt 
+#check to see if it worked
+[tltyner@nova UNIX_Assignment]$ grep "Chromosome" combined_snp_genotype_teosinte.txt 
+#double checking that chromosome didn't shift
+[tltyner@nova UNIX_Assignment]$ awk '$3 ~ /^1$/' combined_snp_genotype_teosinte.txt > snp_genotype_teosinte_chr1.txt  
+#extract chromosome 1 (repeat 2-10)
+[tltyner@nova UNIX_Assignment]$ cat snp_genotype_teosinte_chr10.txt  
+#check to see if it worked
+[tltyner@nova UNIX_Assignment]$ sort -k4,4n snp_genotype_teosinte_chr1.txt > snp_genotype_teosinte_chr1_sorted.txt
+#sort by increasing position values
+[tltyner@nova UNIX_Assignment]$ sort -k4,4nr snp_genotype_teosinte_chr1.txt > snp_genotype_teosinte_chr1_reverse.txt
+#sort by decreasing position values
+[tltyner@nova UNIX_Assignment]$ sed 's/?/-/g' snp_genotype_teosinte_chr1_reverse.txt > snp_genotype_teosinte_chr1_reverse_-.txt
+#replace '?' with '-' for missing data
+[tltyner@nova UNIX_Assignment]$ cat snp_genotype_teosinte_chr10_reverse_-.txt 
+#check to see if it worked
 
 ```
 
