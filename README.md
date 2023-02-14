@@ -79,6 +79,15 @@ By inspecting this file I learned that:
 [tltyner@nova UNIX_Assignment]$ cat snp_genotype_maize_chr1_sorted_reverse_-.txt
 #check to make sure it worked
 #repeated lines 69-80 for chromosomes 2-10
+
+[tltyner@nova UNIX_Assignment]$ awk '$4 ~ /^unknown$/' combined_snp_genotype_maize.txt > snp_position_unknown_maize.txt
+#extracted SNPs with unknown positions into new file
+[tltyner@nova UNIX_Assignment]$ cat snp_position_unknown_maize.txt
+#check to see if it worked
+[tltyner@nova UNIX_Assignment]$ awk '$4 ~ /^multiple$/' combined_snp_genotype_maize.txt > snp_position_multiple_maize.txt
+#extracted SNPs with multiple positions into new file
+[tltyner@nova UNIX_Assignment]$ cat snp_position_unknown_maize.txt 
+#check to see if it worked
 ```
 
 ###Teosinte Data
@@ -111,6 +120,14 @@ By inspecting this file I learned that:
 [tltyner@nova UNIX_Assignment]$ cat snp_genotype_teosinte_chr10_reverse_-.txt 
 #check to see if it worked
 
+[tltyner@nova UNIX_Assignment]$ awk '$4 ~ /^unknown$/' combined_snp_genotype_teosinte.txt > snp_position_unknown_teosinte.txt
+#extracted SNPs with unknown position into new file
+[tltyner@nova UNIX_Assignment]$ cat snp_position_unknown_teosinte.txt
+#check to see if it worked
+[tltyner@nova UNIX_Assignment]$ awk '$4 ~ /^multiple$/' combined_snp_genotype_teosinte.txt > snp_position_multiple_teosinte.txt
+#extracted SNPs with multiple positions into new file
+[tltyner@nova UNIX_Assignment]$ cat snp_position_multiple_teosinte.txt 
+#check to see if it worked
 ```
 
 Here is my brief description of what this code does
