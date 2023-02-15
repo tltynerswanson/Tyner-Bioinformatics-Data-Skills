@@ -139,3 +139,6 @@ $ git commit -a -m "updated files"
 $ git push
 #push changes to this repository
 ```
+
+### Notes
+when joining my files, column 2 was not chromosome, instead it was cdv_marker. I didn't want to cut data that might be important and I couldn't find a code in help channels that easily rearranged columns.
