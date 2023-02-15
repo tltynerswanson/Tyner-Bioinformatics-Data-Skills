@@ -129,11 +129,13 @@ By inspecting this file I learned that:
 [tltyner@nova UNIX_Assignment]$ cat snp_position_multiple_teosinte.txt 
 #check to see if it worked
 ```
-###Finishing Commands
 
+###Finishing Commands
+```
 $ mkdir and $ mv
 #used to organize files
 $ git commit -a -m "updated files"
 #commit changes to files in Nova
 $ git push
 #push changes to this repository
+```
